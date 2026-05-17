@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>尖叫网站 | 手机电脑通用</title>
+    <title>尖叫网站 | 首页</title>
     <style>
         * {
             margin: 0;
@@ -11,10 +11,9 @@
             box-sizing: border-box;
         }
 
-        /* ----- 自定义字体 ----- */
         @font-face {
             font-family: 'Culiu';
-            src: url('fonts/horror.woff') format('woff2');  /* 建议使用 woff2 格式 */
+            src: url('fonts/horror.woff') format('woff2');
             font-weight: normal;
             font-style: normal;
             font-display: swap;
@@ -34,7 +33,6 @@
             margin: 0 auto;
         }
 
-        /* ----- 导航栏 ----- */
         .nav-bar {
             display: flex;
             flex-wrap: wrap;
@@ -77,7 +75,6 @@
             }
         }
 
-        /* ----- 分割线 ----- */
         .divider-strip {
             width: 100%;
             height: 10px;
@@ -88,7 +85,6 @@
             margin: 20px 0 30px 0;
         }
 
-        /* ----- 警告！区域 ----- */
         .warning-row {
             display: flex;
             align-items: center;
@@ -139,7 +135,6 @@
             }
         }
 
-        /* ----- 红色尖叫框（左右布局）----- */
         .scream-box {
             background-color: #e11d1d;
             border: 2px solid #000000;
@@ -178,7 +173,6 @@
             text-align: left;
         }
 
-        /* 手机屏幕调整 */
         @media (max-width: 600px) {
             .scream-box {
                 flex-direction: column;
@@ -198,21 +192,19 @@
             }
         }
 
-        /* ----- 居中图片 ----- */
         .center-image {
             display: block;
-            margin: 40px auto 20px auto;   /* 下边距减小，为发光文字留空间 */
+            margin: 40px auto 20px auto;
             max-width: 90%;
             height: auto;
             border-radius: 8px;
         }
 
-        /* ----- 发光文字效果（整合自用户提供）----- */
         .glow {
-            font-size: 2.5rem;          /* 默认较大，手机端缩小 */
+            font-size: 2.5rem;
             color: #ffffff;
             text-align: center;
-            margin: 10px auto 40px auto; /* 上下间距 */
+            margin: 10px auto 40px auto;
             animation: glow 1s ease-in-out infinite alternate;
             font-family: '华文行楷', '宋体', 'Times New Roman', serif;
             font-weight: bold;
@@ -228,7 +220,6 @@
             }
         }
 
-        /* 兼容旧版 webkit 浏览器 */
         @-webkit-keyframes glow {
             from {
                 text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #e60073, 0 0 40px #e60073, 0 0 50px #e60073, 0 0 60px #e60073, 0 0 70px #e60073;
@@ -240,12 +231,11 @@
 
         @media (max-width: 600px) {
             .glow {
-                font-size: 1.8rem;   /* 手机端缩小，避免折行 */
+                font-size: 1.8rem;
                 margin: 10px auto 30px auto;
             }
         }
 
-        /* ----- 四个文本框网格布局 ----- */
         .card-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -253,7 +243,6 @@
             margin: 40px 0 20px 0;
         }
 
-        /* 手机端变为1列 */
         @media (max-width: 700px) {
             .card-grid {
                 grid-template-columns: 1fr;
@@ -261,7 +250,6 @@
             }
         }
 
-        /* 文本框样式 */
         .pinky-card {
             border-width: 8px;
             border-style: solid;
@@ -301,11 +289,12 @@
 <body>
 <div class="main-content">
     <div class="nav-bar">
-        <a href="#" class="nav-btn">首页</a>
-        <a href="#" class="nav-btn">校园祭</a>
-        <a href="#" class="nav-btn">社团</a>
-        <a href="#" class="nav-btn">我是学生</a>
-        <a href="#" class="nav-btn">加盟商</a>
+        <!-- 注意：链接已改为对应页面 -->
+        <a href="index.html" class="nav-btn">首页</a>
+        <a href="校园祭.html" class="nav-btn">校园祭</a>
+        <a href="社团.html" class="nav-btn">社团</a>
+        <a href="我是学生.html" class="nav-btn">我是学生</a>
+        <a href="https://www.saizeriya.com.cn/Saizeriya/join" class="nav-btn" target="_blank">加盟商</a>
     </div>
 
     <div class="divider-strip"></div>
@@ -329,13 +318,10 @@
         </div>
     </div>
 
-    <!-- 居中的图片 -->
     <img class="center-image" src="images/rocket.gif" alt="居中装饰图" style="width:30%; max-width:600px;">
 
-    <!-- 新增的发光文字（你可以修改里面的内容） -->
     <div class="glow">你失忆了吗？ </div>
 
-    <!-- 四个文本框 -->
     <div class="card-grid">
         <div class="pinky-card">
             <div class="card-title">这是哪里？</div>
@@ -374,6 +360,10 @@
                 做一个好孩子
             </div>
         </div>
+    </div>
+    <div style="text-align: center; margin: 50px 0 20px;">
+        <img src="images/5e0a5dae7a680d69763e6e980d9ab867.png" alt="底部图片" style="max-width: 20%; height: auto; border-radius: 8px;">
+        <p style="color: red; font-weight: bold; font-size: 1.3rem; margin-top: 15px;">回学校吧！或者是：1106507335</p>
     </div>
 </div>
 </body>

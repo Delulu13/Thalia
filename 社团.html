@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>尖叫网站 | 社团</title>
+    <style>
+        /* ========== 全局样式（与首页保持一致） ========== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        @font-face {
+            font-family: 'Culiu';
+            src: url('fonts/horror.woff') format('woff2');
+            font-weight: normal;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        body {
+            background-color: #ffe6f5;
+            background-image: url('images/swim.gif');
+            background-repeat: repeat;
+            font-family: 'Culiu', system-ui, 'Segoe UI', 'Noto Sans', sans-serif;
+            padding: 20px 16px 50px 16px;
+            min-height: 100vh;
+        }
+
+        .main-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .nav-bar {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 16px;
+            margin-top: 20px;
+            margin-bottom: 30px;
+        }
+
+        .nav-btn {
+            display: inline-block;
+            background: transparent;
+            border: 2px solid #f6ff00;
+            border-radius: 0;
+            padding: 2px 16px;
+            line-height: 1.3;
+            font-family: '黑体', '黑体', 'Times New Roman', serif;
+            font-size: 1rem;
+            font-weight: 500;
+            text-decoration: none;
+            color: #000000;
+            transition: color 0.2s ease;
+            text-align: center;
+            cursor: pointer;
+            min-width: 70px;
+        }
+
+        .nav-btn:hover {
+            color: #ff0000;
+        }
+
+        @media (max-width: 600px) {
+            .nav-bar {
+                gap: 12px;
+            }
+            .nav-btn {
+                padding: 2px 12px;
+                font-size: 0.9rem;
+                min-width: 60px;
+            }
+        }
+
+        .divider-strip {
+            width: 100%;
+            height: 10px;
+            background-image: url('images/black.gif');
+            background-repeat: space;
+            background-position: center;
+            background-size: auto 100%;
+            margin: 20px 0 30px 0;
+        }
+
+        /* ========== 本页面新增样式 ========== */
+        .page-title {
+            text-align: center;
+            font-weight: bold;
+            font-size: 2.5rem;
+            color: rgb(238, 255, 0);
+            margin: 20px 0 30px;
+            font-family: '黑体', 'Microsoft YaHei', 'SimHei', sans-serif;
+        }
+        @media (max-width: 600px) {
+            .page-title {
+                font-size: 1.8rem;
+            }
+        }
+
+        .info-box {
+            background-color: white;
+            border: 2px solid black;
+            border-radius: 0;
+            padding: 20px 24px;
+            width: 80%;
+            max-width: 700px;
+            margin: 0 auto 50px auto;
+            text-align: center;
+            font-family: '黑体', 'Microsoft YaHei', 'SimHei', sans-serif;  /* 新增这一行 */
+        }
+        .info-box p {
+            color: black;
+            font-size: 1.1rem;
+            line-height: 1.5;
+            margin-bottom: 15px;
+        }
+        .info-box a {
+            color: blue;
+            text-decoration: underline;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+        .info-box a:hover {
+            color: darkblue;
+        }
+
+        .card-list {
+            margin: 40px 0;
+        }
+        .card-item {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            margin-bottom: 50px;
+            background: transparent;
+        }
+        .card-item:nth-child(odd) {
+            flex-direction: row;
+        }
+        .card-item:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+        .card-img {
+            flex: 1;
+            text-align: center;
+        }
+        .card-img img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+        .card-content {
+            flex: 1;
+            background-color: white;
+            border: 2px solid black;
+            border-radius: 0;
+            padding: 20px;
+            text-align: center;
+        }
+        .card-content h3 {
+            color: red;
+            font-weight: bold;
+            font-size: 1.6rem;
+            margin-bottom: 16px;
+            font-family: 'SimSun', '宋体', serif;
+        }
+        .card-content p {
+            color: black;
+            font-size: 1rem;
+            line-height: 1.5;
+            margin-bottom: 12px;
+        }
+        /* 新增额外文字样式：黑体、左对齐、加粗红色 */
+        .card-content .extra-text {
+            font-family: '黑体', 'Microsoft YaHei', 'SimHei', sans-serif;
+            font-weight: bold;
+            color: red;
+            text-align: left;
+            margin-top: 10px;
+            font-size: 1rem;
+        }
+
+        @media (max-width: 700px) {
+            .card-item,
+            .card-item:nth-child(odd),
+            .card-item:nth-child(even) {
+                flex-direction: column;
+                gap: 15px;
+                margin-bottom: 40px;
+            }
+            .card-img,
+            .card-content {
+                width: 100%;
+            }
+            .card-img img {
+                max-width: 80%;
+                margin: 0 auto;
+            }
+            .card-content h3 {
+                font-size: 1.4rem;
+            }
+            .card-content p {
+                font-size: 0.95rem;
+            }
+            .card-content .extra-text {
+                font-size: 0.95rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="main-content">
+    <div class="nav-bar">
+        <a href="index.html" class="nav-btn">首页</a>
+        <a href="校园祭.html" class="nav-btn">校园祭</a>
+        <a href="社团.html" class="nav-btn">社团</a>
+        <a href="我是学生.html" class="nav-btn">我是学生</a>
+        <a href="https://www.saizeriya.com.cn/Saizeriya/join" class="nav-btn" target="_blank">加盟商</a>
+    </div>
+
+    <div class="divider-strip"></div>
+
+    <div class="page-title">我们真的有很多社团！</div>
+
+    <div class="info-box">
+        <p>你要为了哪个社团而献出生命？</p>
+        <p>说实话，你想要找个新的凉快地去死也行啊：</p>
+        <a href="创建社团.html" target="_blank">我要去个新社团</a>
+    </div>
+
+    <div class="card-list">
+        <!-- 卡片1 -->
+        <div class="card-item">
+            <div class="card-img">
+                <img src="images/xs.png" alt="社团1图片" onerror="this.src='https://placehold.co/400x300?text=社团图片1'">
+            </div>
+            <div class="card-content">
+                <h3>学生权益守护协会</h3>
+                <p>顾名思义，守护学生权益的学生组织。某些地方也叫他们学生会。</p>
+                <p>符合你想象的强权组织，哦！说实话，这场屠杀也不是毫无意义，要不是这个活动，那个黄金位置绝对是这群权利家的！</p>
+                <p>他们很擅长制定规则，当然，也擅长钻规则漏洞，希望你没惹到他们，他们会想办法让你在规则里死得最难受。</p>
+                <div class="extra-text">成员名单：</div>
+                <div class="extra-text">他还没来（这是一名学生会主席）</div>
+                <div class="extra-text">他还没来</div>
+                <div class="extra-text">他还没来</div>
+                <div class="extra-text">他还没来</div>
+            </div>
+        </div>
+        <!-- 卡片2 -->
+        <div class="card-item">
+            <div class="card-img">
+                <img src="images/jr.png" alt="社团2图片" onerror="this.src='https://placehold.co/400x300?text=社团图片2'">
+            </div>
+            <div class="card-content">
+                <h3>筋肉部</h3>
+                <p>原本是多个运动部门，如今因为社团活动场地的安排而只能可怜的被安排在一起训练。</p>
+                <p>所有运动类的社团都被归结在这里，这里有你最想要的青春荷尔蒙（浓度100%！）他们为了获得更大的运动场地而战。</p>
+                <p>说实话，如果继续大屠杀，我觉得他们是很强力的夺冠目标。但可惜，现在也需要用到头脑！</p>
+                <div class="extra-text">成员名单(我想他们要标注各自擅长的运动)：</div>
+                <div class="extra-text">他还没来</div>
+                <div class="extra-text">他还没来</div>
+                <div class="extra-text">他还没来</div>
+                <div class="extra-text">他还没来</div>
+            </div>
+        </div>
+        <!-- 卡片3 -->
+        <div class="card-item">
+            <div class="card-img">
+                <img src="images/sheTuan3.jpg" alt="社团3图片" onerror="this.src='https://placehold.co/400x300?text=社团图片3'">
+            </div>
+            <div class="card-content">
+                <h3>🎨 美术社</h3>
+                <p>素描、水彩、数字绘画，零基础也能参与。每学期举办校内画展。</p>
+                <div class="extra-text">🖌️ 新画具已到，社员免费领取 🖌️</div>
+            </div>
+        </div>
+        <!-- 卡片4 -->
+        <div class="card-item">
+            <div class="card-img">
+                <img src="images/sheTuan4.jpg" alt="社团4图片" onerror="this.src='https://placehold.co/400x300?text=社团图片4'">
+            </div>
+            <div class="card-content">
+                <h3>🎵 音乐社</h3>
+                <p>乐队排练、歌唱大赛、乐器教学。让音乐点燃你的校园生活！</p>
+                <div class="extra-text">🎸 招募吉他手和鼓手，面试时间周三放学后 🎸</div>
+            </div>
+        </div>
+        <!-- 卡片5 -->
+        <div class="card-item">
+            <div class="card-img">
+                <img src="images/sheTuan5.jpg" alt="社团5图片" onerror="this.src='https://placehold.co/400x300?text=社团图片5'">
+            </div>
+            <div class="card-content">
+                <h3>🤖 科技社</h3>
+                <p>机器人制作、编程挑战、3D打印。探索未来科技的无限可能。</p>
+                <div class="extra-text">💻 本周五将举办编程马拉松，欢迎报名 💻</div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
