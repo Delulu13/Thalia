@@ -11,10 +11,10 @@
             box-sizing: border-box;
         }
 
-        /* ----- 添加自定义字体（culiu.woff2）----- */
+        /* ----- 自定义字体 ----- */
         @font-face {
             font-family: 'Culiu';
-            src: url('fonts/horror.woff') format('woff2');  /* 注意：.ttf 通常用 truetype，但随你 */
+            src: url('fonts/horror.woff') format('woff2');  /* 建议使用 woff2 格式 */
             font-weight: normal;
             font-style: normal;
             font-display: swap;
@@ -51,7 +51,7 @@
             border-radius: 0;
             padding: 2px 16px;
             line-height: 1.3;
-            font-family: 'SimSun', '宋体', 'Times New Roman', serif;
+            font-family: '黑体', '黑体', 'Times New Roman', serif;
             font-size: 1rem;
             font-weight: 500;
             text-decoration: none;
@@ -151,7 +151,7 @@
             display: flex;
             align-items: center;
             gap: 20px;
-            flex-wrap: wrap;   /* 手机窄屏时自动换行 */
+            flex-wrap: wrap;
         }
 
         .scream-left {
@@ -175,35 +175,126 @@
             font-weight: bold;
             line-height: 1.6;
             word-break: break-word;
-            text-align: left;   /* 文字左对齐 */
+            text-align: left;
         }
 
         /* 手机屏幕调整 */
         @media (max-width: 600px) {
-          .scream-box {
-              flex-direction: column;    /* 垂直排列，图片在上文字在下 */
-              align-items: center;       /* 居中（可选） */
-              padding: 16px 20px;
-              gap: 12px;
+            .scream-box {
+                flex-direction: column;
+                align-items: center;
+                padding: 16px 20px;
+                gap: 12px;
             }
-         .scream-left {
-              margin-bottom: 0;          /* 可去掉额外间距 */
+            .scream-left {
+                margin-bottom: 0;
             }
-         .scream-img {
-              max-width: 150px;
+            .scream-img {
+                max-width: 150px;
             }
-         .scream-text {
-             font-size: 1rem;
-             text-align: center;        /* 手机端文字居中更美观 */
+            .scream-text {
+                font-size: 1rem;
+                text-align: center;
             }
-}
+        }
 
-        .footer-placeholder {
+        /* ----- 居中图片 ----- */
+        .center-image {
+            display: block;
+            margin: 40px auto 20px auto;   /* 下边距减小，为发光文字留空间 */
+            max-width: 90%;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        /* ----- 发光文字效果（整合自用户提供）----- */
+        .glow {
+            font-size: 2.5rem;          /* 默认较大，手机端缩小 */
+            color: #ffffff;
             text-align: center;
-            margin-top: 20px;
-            font-size: 0.75rem;
-            color: #eaedbc;
-            opacity: 0.7;
+            margin: 10px auto 40px auto; /* 上下间距 */
+            animation: glow 1s ease-in-out infinite alternate;
+            font-family: '华文行楷', '宋体', 'Times New Roman', serif;
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+
+        @keyframes glow {
+            from {
+                text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #e60073, 0 0 40px #e60073, 0 0 50px #e60073, 0 0 60px #e60073, 0 0 70px #e60073;
+            }
+            to {
+                text-shadow: 0 0 20px #fff, 0 0 30px #ff4da6, 0 0 40px #ff4da6, 0 0 50px #ff4da6, 0 0 60px #ff4da6, 0 0 70px #ff4da6, 0 0 80px #ff4da6;
+            }
+        }
+
+        /* 兼容旧版 webkit 浏览器 */
+        @-webkit-keyframes glow {
+            from {
+                text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #e60073, 0 0 40px #e60073, 0 0 50px #e60073, 0 0 60px #e60073, 0 0 70px #e60073;
+            }
+            to {
+                text-shadow: 0 0 20px #fff, 0 0 30px #ff4da6, 0 0 40px #ff4da6, 0 0 50px #ff4da6, 0 0 60px #ff4da6, 0 0 70px #ff4da6, 0 0 80px #ff4da6;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .glow {
+                font-size: 1.8rem;   /* 手机端缩小，避免折行 */
+                margin: 10px auto 30px auto;
+            }
+        }
+
+        /* ----- 四个文本框网格布局 ----- */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            margin: 40px 0 20px 0;
+        }
+
+        /* 手机端变为1列 */
+        @media (max-width: 700px) {
+            .card-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+        }
+
+        /* 文本框样式 */
+        .pinky-card {
+            border-width: 8px;
+            border-style: solid;
+            border-image: url("https://i.ibb.co/h1Q3bFn/83-B27704-CEA1-4-B8-F-BF79-90-D624-EDC6-F6.png") 8 fill round;
+            background-color: rgba(255, 240, 240, 0.9);
+            padding: 20px 16px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .card-title {
+            color: red;
+            font-weight: bold;
+            font-size: 1.6rem;
+            text-align: center;
+            margin-bottom: 16px;
+            font-family: 'SimSun', '宋体', 'Times New Roman', serif;
+        }
+
+        .card-text {
+            font-family: 'SimSun', '宋体', 'Times New Roman', serif;
+            color: black;
+            font-size: 1rem;
+            line-height: 1.5;
+            text-align: left;
+        }
+
+        @media (max-width: 600px) {
+            .card-title {
+                font-size: 1.4rem;
+            }
+            .card-text {
+                font-size: 0.95rem;
+            }
         }
     </style>
 </head>
@@ -238,8 +329,51 @@
         </div>
     </div>
 
-    <div class="footer-placeholder">
-        ⚡ 替换图片: pattern.png | divider-icon.png | warning-left.png | warning-right.png
+    <!-- 居中的图片 -->
+    <img class="center-image" src="images/rocket.gif" alt="居中装饰图" style="width:30%; max-width:600px;">
+
+    <!-- 新增的发光文字（你可以修改里面的内容） -->
+    <div class="glow">你失忆了吗？ </div>
+
+    <!-- 四个文本框 -->
+    <div class="card-grid">
+        <div class="pinky-card">
+            <div class="card-title">这是哪里？</div>
+            <div class="card-text">
+                这是你就读的学校，塔利娅私立高中。<br>
+                它在哪里不重要，你是几年级的不重要(事实上，我认为只要是高中生就有着未成年的可爱)。总之，你在这里上学。<br>
+                这是一个很开放的学校，毕竟连校长都被我丢进下水道了！你们现在在准备学园祭，真是青春的浪漫！<br>
+                无关紧要，但是我们穿的是西式校服（这包含了衬衫、西装外套、西装裤或裙子，无论男女）。毕竟我们的学校名字听起来就很洋气，对吧？
+            </div>
+        </div>
+        <div class="pinky-card">
+            <div class="card-title">发生了什么？</div>
+            <div class="card-text">
+                哦，小可怜，你是不是在大屠杀里被吓坏脑子了？<br>
+                由于学校准备开展校园祭，每个社团都会在那天有自己的专属摊位......我想没人能拒绝最黄金的那个位置，对吧？那太有魅力了！<br>
+                一开始只是吵架，然后某个捣蛋鬼抄起桌子打爆了另一个孩子的脑袋，好吧，然后就变成现在这样了。那天谁赢了也没人记得，只有垃圾桶吃尸体吃到蛋白质中毒了！荷尔蒙还真是可怕！<br>
+                好在你们第二天就能复活(这可真是美好的设定！)。
+            </div>
+        </div>
+        <div class="pinky-card">
+            <div class="card-title">新方法是什么？</div>
+            <div class="card-text">
+                大屠杀太暴力了，孩子，为了垃圾桶的生命健康，你们应该一个个杀人！<br>
+                我和垃圾桶老兄制定了一套完美的，能活动你们小小脑袋的杀人游戏，你可能觉得这很像黑手党游戏或者狼人杀，但这本来就是抄袭，孩子！<br>
+                总之，如果你们想吵架，那就来玩这个游戏吧！我会给你们分配随机的身份，然后你们按规则来杀一趟，最后活下来的那波人给自己的社团加分~和平的解决方法。
+            </div>
+        </div>
+        <div class="pinky-card">
+            <div class="card-title">别问了！你应该遵守这些规矩</div>
+            <div class="card-text">
+                我宣誓：<br>
+                按照规则和平的杀人<br>
+                下课和放学后绝不杀人<br>
+                不忘记带便当来学校吃饭<br>
+                不乱丢垃圾（按规矩杀的人除外）<br>
+                做一个好孩子
+            </div>
+        </div>
     </div>
 </div>
 </body>
