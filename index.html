@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>尖叫网站 | 手机电脑通用</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* ----- 添加自定义字体（culiu.woff2）----- */
+        @font-face {
+            font-family: 'Culiu';
+            src: url('fonts/horror.woff') format('woff2');  /* 注意：.ttf 通常用 truetype，但随你 */
+            font-weight: normal;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        body {
+            background-color: #ffe6f5;
+            background-image: url('images/fly.gif');
+            background-repeat: repeat;
+            font-family: 'Culiu', system-ui, 'Segoe UI', 'Noto Sans', sans-serif;
+            padding: 20px 16px 50px 16px;
+            min-height: 100vh;
+        }
+
+        .main-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* ----- 导航栏 ----- */
+        .nav-bar {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 16px;
+            margin-top: 20px;
+            margin-bottom: 30px;
+        }
+
+        .nav-btn {
+            display: inline-block;
+            background: transparent;
+            border: 2px solid #000000;
+            border-radius: 0;
+            padding: 2px 16px;
+            line-height: 1.3;
+            font-family: 'SimSun', '宋体', 'Times New Roman', serif;
+            font-size: 1rem;
+            font-weight: 500;
+            text-decoration: none;
+            color: #2b00ff;
+            transition: color 0.2s ease;
+            text-align: center;
+            cursor: pointer;
+            min-width: 70px;
+        }
+
+        .nav-btn:hover {
+            color: #ff0000;
+        }
+
+        @media (max-width: 600px) {
+            .nav-bar {
+                gap: 12px;
+            }
+            .nav-btn {
+                padding: 2px 12px;
+                font-size: 0.9rem;
+                min-width: 60px;
+            }
+        }
+
+        /* ----- 分割线 ----- */
+        .divider-strip {
+            width: 100%;
+            height: 10px;
+            background-image: url('images/black.gif');
+            background-repeat: space;
+            background-position: center;
+            background-size: auto 100%;
+            margin: 20px 0 30px 0;
+        }
+
+        /* ----- 警告！区域 ----- */
+        .warning-row {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: nowrap;
+            margin-bottom: 40px;
+        }
+
+        .side-img {
+            max-width: 80px;
+            width: auto;
+            height: auto;
+            max-height: 80px;
+            object-fit: contain;
+            display: block;
+        }
+
+        .warning-big-text {
+            font-family: 'SimSun', '宋体', 'Times New Roman', serif;
+            font-size: 3rem;
+            font-weight: 900;
+            letter-spacing: 4px;
+            color: #2b00ff;
+            white-space: nowrap;
+        }
+
+        @media (max-width: 640px) {
+            .warning-big-text {
+                font-size: 2rem;
+                letter-spacing: 2px;
+            }
+            .side-img {
+                max-width: 50px;
+                max-height: 50px;
+            }
+            .warning-row {
+                gap: 12px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .warning-big-text {
+                font-size: 1.6rem;
+            }
+            .side-img {
+                max-width: 40px;
+            }
+        }
+
+        /* ----- 红色尖叫框（左右布局）----- */
+        .scream-box {
+            background-color: #e11d1d;
+            border: 2px solid #000000;
+            border-radius: 0;
+            padding: 20px 24px;
+            width: 90%;
+            max-width: 800px;
+            margin: 0 auto 40px auto;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;   /* 手机窄屏时自动换行 */
+        }
+
+        .scream-left {
+            flex-shrink: 0;
+        }
+
+        .scream-img {
+            display: block;
+            max-width: 200px;
+            width: 100%;
+            height: auto;
+        }
+
+        .scream-right {
+            flex: 1;
+        }
+
+        .scream-text {
+            color: rgb(0, 0, 0);
+            font-size: 1.2rem;
+            font-weight: bold;
+            line-height: 1.6;
+            word-break: break-word;
+            text-align: left;   /* 文字左对齐 */
+        }
+
+        /* 手机屏幕调整 */
+        @media (max-width: 600px) {
+          .scream-box {
+              flex-direction: column;    /* 垂直排列，图片在上文字在下 */
+              align-items: center;       /* 居中（可选） */
+              padding: 16px 20px;
+              gap: 12px;
+            }
+         .scream-left {
+              margin-bottom: 0;          /* 可去掉额外间距 */
+            }
+         .scream-img {
+              max-width: 150px;
+            }
+         .scream-text {
+             font-size: 1rem;
+             text-align: center;        /* 手机端文字居中更美观 */
+            }
+}
+
+        .footer-placeholder {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 0.75rem;
+            color: #eaedbc;
+            opacity: 0.7;
+        }
+    </style>
+</head>
+<body>
+<div class="main-content">
+    <div class="nav-bar">
+        <a href="#" class="nav-btn">首页</a>
+        <a href="#" class="nav-btn">校园祭</a>
+        <a href="#" class="nav-btn">社团</a>
+        <a href="#" class="nav-btn">我是学生</a>
+        <a href="#" class="nav-btn">加盟商</a>
+    </div>
+
+    <div class="divider-strip"></div>
+
+    <div class="warning-row">
+        <img src="images/why.jpg" alt="左图" class="side-img">
+        <div class="warning-big-text">天啊！我感到抱歉</div>
+        <img src="images/why.jpg" alt="右图" class="side-img">
+    </div>
+
+    <div class="scream-box">
+        <div class="scream-left">
+            <img src="images/pig.gif" alt="尖叫图标" class="scream-img">
+        </div>
+        <div class="scream-right">
+            <div class="scream-text">
+                你好，我是一头猪，我黑进了这个学校的官网，我现在要代表塔莉娅学校的所有垃圾桶向你们发出抗议。<br>
+                我理解校园祭让人感到开心，但在你们杀掉其他学生的时候，可以考虑垃圾桶的感受吗？他们并不需要每日摄入如此多的蛋白质，更何况有的孩子不爱洗澡。<br>
+                我已经把校长丢进了下水道，从今天开始，让我们来用更和平且活动青少年大脑的方法来决定黄金摊位的所有权！
+            </div>
+        </div>
+    </div>
+
+    <div class="footer-placeholder">
+        ⚡ 替换图片: pattern.png | divider-icon.png | warning-left.png | warning-right.png
+    </div>
+</div>
+</body>
+</html>
